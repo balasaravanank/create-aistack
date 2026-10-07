@@ -9,7 +9,7 @@ import { scaffold } from '../src/core/scaffold.js';
 const program = createCommand();
 
 program
-  .name('create-agent-stack')
+  .name('create-aistack')
   .description('The AI-First Project Scaffolder')
   .version('0.1.0')
   .argument('[project-name]', 'Name of the project directory')

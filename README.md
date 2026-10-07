@@ -1,4 +1,4 @@
-# create-agent-stack
+# create-aistack
 
 A CLI scaffolding tool that generates full-stack projects optimized for AI coding agents.
 
@@ -6,28 +6,28 @@ A CLI scaffolding tool that generates full-stack projects optimized for AI codin
 
 Current scaffolding tools generate project structures optimized for human developers. When using AI coding assistants, developers often expend significant token budgets (30-50%) providing context about project structure, routing, state management, and architectural conventions. 
 
-`create-agent-stack` addresses this inefficiency by generating projects with machine-readable context. The generated architecture allows AI agents to understand the entire stack, module contracts, and project structure in approximately 500 tokens, compared to the standard 5,000+ token requirement of scanning an entire repository.
+`create-aistack` addresses this inefficiency by generating projects with machine-readable context. The generated architecture allows AI agents to understand the entire stack, module contracts, and project structure in approximately 500 tokens, compared to the standard 5,000+ token requirement of scanning an entire repository.
 
 ## Installation and Usage
 
-You can use the tool interactively or via command-line arguments.
+The cleanest and most modern way to use this tool is via npm's built-in `create` command. You do not need to install anything globally.
 
-### Interactive Mode
+### Interactive Wizard (Recommended)
 
 ```bash
-npx create-agent-stack
+npm create aistack@latest
 ```
 
-### Command-Line Mode
+### Command-Line Mode (Fast)
 
 ```bash
-npx create-agent-stack my-app --fe=react-next --be=fastapi --css=tailwind
+npm create aistack@latest my-app -- --fe=react-next --be=fastapi --css=tailwind
 ```
 
 ### Unattended Mode (CI/CD / Scripting)
 
 ```bash
-npx create-agent-stack my-app --fe=react --be=express --css=vanilla --no-interactive
+npm create aistack@latest my-app -- --fe=react --be=express --css=vanilla --no-interactive
 ```
 
 ## Configuration Matrix
@@ -57,7 +57,7 @@ Append features using the `--features` flag (comma-separated):
 
 Example:
 ```bash
-npx create-agent-stack my-app --fe=react --be=express --features=auth,db,testing
+npm create aistack@latest my-app -- --fe=react --be=express --features=auth,db,testing
 ```
 
 ## Architecture: The AI-First Approach
@@ -73,10 +73,12 @@ Barrel exports tagged with `@ai-context` annotations. Instead of traversing mult
 ### 3. AI Context Budget
 During execution, the CLI calculates and reports the context footprint of the generated project, allowing you to monitor the token efficiency of the repository layout.
 
-## Subcommands
+## Post-Scaffold Commands
 
-- `npx create-agent-stack add <feature>`: Injects a new feature (e.g., auth, db) into an existing project.
-- `npx create-agent-stack sync`: Regenerates the `PROJECT.md` and `_contracts` files to align with recent codebase modifications.
+Once inside a scaffolded project, you can run:
+
+- `npx create-aistack add <feature>`: Injects a new feature (e.g., auth, db) into the existing project.
+- `npx create-aistack sync`: Regenerates the `PROJECT.md` and `_contracts` files to align with recent codebase modifications.
 
 ## Compatibility
 
