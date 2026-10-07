@@ -1,10 +1,10 @@
 {
-  "name": "create-aistack",
+  "name": "create-agent-stack",
   "version": "0.1.0",
   "description": "The AI-First Project Scaffolder — generates full-stack projects pre-wired for AI coding agents",
   "type": "module",
   "bin": {
-    "create-aistack": "./bin/cli.js"
+    "create-agent-stack": "./bin/cli.js"
   },
   "main": "./src/core/scaffold.js",
   "scripts": {
