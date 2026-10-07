@@ -1,0 +1,113 @@
+# <%= projectName %>
+
+> Scaffolded with [create-aistack](https://github.com/create-aistack) — the AI-first project scaffolder.
+
+## Quick Start
+
+```bash
+npm install
+<% if (config.be === 'fastapi') { -%>
+pip install -r src/server/requirements.txt
+<% } -%>
+npm run dev
+```
+
+<% if (config.be !== 'none' && config.fe !== 'react-next') { -%>
+This starts both the frontend (port 5173) and backend (port <%= config.be === 'express' ? '3001' : '8000' %>) concurrently.
+<% } -%>
+
+## 🧠 AI Context (Read This!)
+
+This project is **optimized for AI coding agents**. Instead of pasting your entire codebase, share these files:
+
+| File | What It Contains | Tokens |
+|------|-----------------|--------|
+| [`PROJECT.md`](./PROJECT.md) | Full project DNA — stack, structure, conventions | ~300 |
+| [`src/client/_contracts.ts`](./src/client/_contracts.ts) | Frontend module index with descriptions | ~150 |
+<% if (config.be === 'express') { -%>
+| [`src/server/_contracts.js`](./src/server/_contracts.js) | Backend module index with descriptions | ~100 |
+<% } else if (config.be === 'fastapi') { -%>
+| [`src/server/_contracts.py`](./src/server/_contracts.py) | Backend module index with descriptions | ~100 |
+<% } -%>
+<% if (config.be !== 'none') { -%>
+| [`src/shared/api.schema.ts`](./src/shared/api.schema.ts) | API type definitions | ~80 |
+<% } -%>
+
+**→ Share `PROJECT.md` in your first prompt. That's it. ~90% token savings.**
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Frontend | **<%= config.fe === 'react' ? 'React (Vite)' : config.fe === 'react-next' ? 'Next.js (App Router)' : 'Vue (Vite)' %>** |
+<% if (config.be !== 'none') { -%>
+| Backend | **<%= config.be === 'express' ? 'Express (Node.js)' : 'FastAPI (Python)' %>** |
+<% } -%>
+| Styling | **<%= config.css === 'tailwind' ? 'Tailwind CSS v4' : config.css === 'vanilla' ? 'Vanilla CSS (design tokens)' : 'shadcn/ui + Tailwind' %>** |
+<% if (config.features.length > 0) { -%>
+| Features | <%= config.features.join(', ') %> |
+<% } -%>
+
+## Project Structure
+
+```
+<%= projectName %>/
+├── PROJECT.md              ← 🧠 AI Project DNA
+├── src/
+│   ├── client/             ← Frontend
+│   │   ├── _contracts.ts   ← 🧠 AI module index
+<% if (config.fe === 'react-next') { -%>
+│   │   ├── app/            ← Next.js App Router
+│   │   │   ├── layout.tsx
+│   │   │   ├── page.tsx
+│   │   │   └── api/        ← API routes
+<% } else { -%>
+│   │   ├── pages/          ← Route-level components
+<% } -%>
+│   │   ├── components/     ← Reusable UI
+│   │   ├── hooks/          ← Custom hooks
+│   │   └── styles/         ← CSS / design tokens
+<% if (config.be !== 'none') { -%>
+│   ├── server/             ← Backend
+│   │   ├── _contracts.<%= config.be === 'express' ? 'js' : 'py' %>  ← 🧠 AI module index
+│   │   ├── routes/         ← API endpoints
+│   │   ├── services/       ← Business logic
+<% if (config.be === 'express') { -%>
+│   │   └── middleware/     ← Express middleware
+<% } else { -%>
+│   │   └── models/         ← Pydantic models
+<% } -%>
+│   └── shared/             ← Cross-stack contracts
+│       └── api.schema.ts
+<% } -%>
+<% if (config.features.includes('testing')) { -%>
+├── tests/                  ← Test suites
+<% } -%>
+<% if (config.features.includes('docker')) { -%>
+├── Dockerfile
+├── docker-compose.yml
+<% } -%>
+└── scripts/
+    └── dev.js              ← Concurrent dev servers
+```
+
+## Commands
+
+| Command | Purpose |
+|---------|---------|
+| `npm run dev` | Start dev server<%= config.be !== 'none' && config.fe !== 'react-next' ? ' (frontend + backend)' : '' %> |
+<% if (config.be !== 'none' && config.fe !== 'react-next') { -%>
+| `npm run dev:client` | Frontend only |
+| `npm run dev:server` | Backend only |
+<% } -%>
+| `npm run build` | Production build |
+<% if (config.features.includes('testing')) { -%>
+| `npm run test` | Run tests |
+<% } -%>
+<% if (config.features.includes('docker')) { -%>
+| `docker compose up` | Run in Docker |
+<% } -%>
+
+## License
+
+MIT

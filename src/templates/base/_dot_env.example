@@ -1,0 +1,12 @@
+# Environment Variables
+# Copy to .env and fill in values
+
+# Server
+PORT=3001
+NODE_ENV=development
+
+# Database (if using db feature)
+# DATABASE_URL=sqlite://./dev.db
+
+# Auth (if using auth feature)
+# JWT_SECRET=change-me-to-a-random-string

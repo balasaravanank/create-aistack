@@ -1,0 +1,31 @@
+{
+  "name": "<%= projectName %>",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+<% if (config.be !== 'none') { -%>
+    "dev": "node scripts/dev.js",
+    "dev:client": "cd src/client && npx vite",
+<% if (config.be === 'express') { -%>
+    "dev:server": "node --watch src/server/main.js",
+<% } else if (config.be === 'fastapi') { -%>
+    "dev:server": "cd src/server && uvicorn main:app --reload --port 8000",
+<% } -%>
+<% } else { -%>
+    "dev": "cd src/client && npx vite",
+<% } -%>
+    "build": "cd src/client && npx vite build",
+    "lint": "eslint src/",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.0",
+    "vite": "^6.0.0"<% if (config.features.includes('testing')) { %>,
+    "vitest": "^3.0.0"<% } %>
+  }
+}

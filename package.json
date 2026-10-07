@@ -1,0 +1,56 @@
+{
+  "name": "create-aistack",
+  "version": "0.1.0",
+  "description": "The AI-First Project Scaffolder — generates full-stack projects pre-wired for AI coding agents",
+  "type": "module",
+  "bin": {
+    "create-aistack": "./bin/cli.js"
+  },
+  "main": "./src/core/scaffold.js",
+  "scripts": {
+    "dev": "node bin/cli.js",
+    "test": "node --test tests/"
+  },
+  "keywords": [
+    "scaffold",
+    "cli",
+    "ai",
+    "react",
+    "express",
+    "fastapi",
+    "fullstack",
+    "create-app",
+    "ai-optimized",
+    "project-generator"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "homepage": "",
+  "bugs": {
+    "url": ""
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^7.0.0",
+    "chalk": "^5.4.0",
+    "commander": "^13.0.0",
+    "ejs": "^3.1.10",
+    "ora": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ]
+}

@@ -1,0 +1,17 @@
+# Base image
+FROM node:20-alpine AS base
+WORKDIR /app
+
+# Install dependencies
+COPY package*.json ./
+RUN npm ci
+
+# Copy source
+COPY . .
+
+# Build
+RUN npm run build
+
+# Expose port and run
+EXPOSE 3000
+CMD ["npm", "start"]

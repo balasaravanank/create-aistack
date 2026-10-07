@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+/* === Custom Design Tokens (extending Tailwind) === */
+@theme {
+  --color-bg: #0a0a0f;
+  --color-surface: #14141f;
+  --color-surface-hover: #1e1e2e;
+  --color-border: #2a2a3d;
+  --color-primary: #6366f1;
+  --color-primary-hover: #818cf8;
+  --color-secondary: #22d3ee;
+}
+
+/* === Base Overrides === */
+body {
+  @apply bg-[var(--color-bg)] text-gray-100 antialiased;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* === Component Styles (when not using inline Tailwind) === */
+.btn {
+  @apply inline-flex items-center justify-center font-semibold rounded-md transition-all duration-200 text-sm;
+}
+
+.btn-md {
+  @apply px-6 py-3;
+}
+
+.btn-primary {
+  @apply bg-indigo-500 text-white hover:bg-indigo-400 hover:shadow-lg hover:shadow-indigo-500/25;
+}
+
+.btn-secondary {
+  @apply bg-transparent text-gray-100 border border-gray-700 hover:border-indigo-500 hover:text-indigo-400;
+}
