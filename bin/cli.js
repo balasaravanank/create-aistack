@@ -1,5 +1,14 @@
 #!/usr/bin/env node
 
+const MIN_NODE_VERSION = 18;
+const currentNodeVersion = process.versions.node;
+if (parseInt(currentNodeVersion.split('.')[0], 10) < MIN_NODE_VERSION) {
+  console.error(`\x1b[31mYou are running Node.js ${currentNodeVersion}.\x1b[0m`);
+  console.error(`\x1b[31mcreate-aistack requires Node.js ${MIN_NODE_VERSION} or higher.\x1b[0m`);
+  console.error('Please update your version of Node.js.');
+  process.exit(1);
+}
+
 import { createCommand } from 'commander';
 import { parseArgs } from '../src/cli/args.js';
 import { runPrompts } from '../src/cli/prompts.js';
@@ -27,6 +36,25 @@ program
       const config = cliArgs.noInteractive
         ? (await import('../src/cli/args.js')).applyDefaults(cliArgs)
         : await runPrompts(cliArgs);
+
+      const path = await import('node:path');
+      const { isEmptyDir } = await import('../src/utils/fs.js');
+      const root = path.resolve(process.cwd(), config.projectName);
+      
+      if (!(await isEmptyDir(root))) {
+        if (cliArgs.noInteractive) {
+          throw new Error(`Directory "${config.projectName}" is not empty.`);
+        }
+        const { confirm } = await import('@inquirer/prompts');
+        const overwrite = await confirm({
+          message: `Directory "${config.projectName}" is not empty. Continue and overwrite files?`,
+          default: false,
+        });
+        if (!overwrite) {
+          console.log('\n👋 Cancelled. See you next time!');
+          process.exit(0);
+        }
+      }
 
       await scaffold(config);
 

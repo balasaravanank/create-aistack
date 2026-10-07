@@ -1,9 +1,11 @@
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { copyTemplateDir, ensureDir, writeFile } from '../utils/fs.js';
 import { initGit } from '../utils/git.js';
 import { generateDna } from './dna-generator.js';
 import { generateContracts } from './contract-gen.js';
 import { estimateBudget } from './token-counter.js';
+import { installDependencies } from '../utils/install.js';
 import { createSpinner, displayBudget, displayNextSteps } from '../cli/display.js';
 import { STACK_LABELS } from '../cli/display.js';
 
@@ -60,6 +62,15 @@ export async function scaffold(config) {
     await initGit(root);
   }
 
+  // 9. Install dependencies
+  try {
+    spinner.text = '  Installing dependencies...';
+    await installDependencies(root);
+  } catch (err) {
+    spinner.warn(`  Dependencies failed to install automatically: ${err.message}`);
+    spinner = createSpinner('Finishing up...').start();
+  }
+
   spinner.succeed('  Project scaffolded!');
 
   // 9. Display AI Context Budget
@@ -71,5 +82,5 @@ export async function scaffold(config) {
 }
 
 function getTemplatePath(templateName) {
-  return new URL(`../templates/${templateName}/`, import.meta.url).pathname.replace(/^\/([A-Z]:)/, '$1');
+  return fileURLToPath(new URL(`../templates/${templateName}/`, import.meta.url));
 }

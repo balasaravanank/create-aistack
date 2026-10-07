@@ -11,6 +11,21 @@ export async function ensureDir(dirPath) {
 }
 
 /**
+ * Check if a directory exists and is empty.
+ * Returns true if the directory doesn't exist or is empty.
+ */
+export async function isEmptyDir(dirPath) {
+  try {
+    const files = await fs.readdir(dirPath);
+    // Ignore .git if present, otherwise check if empty
+    return files.length === 0 || (files.length === 1 && files[0] === '.git');
+  } catch (err) {
+    if (err.code === 'ENOENT') return true;
+    throw err;
+  }
+}
+
+/**
  * Write content to a file, creating parent directories as needed.
  */
 export async function writeFile(filePath, content) {
