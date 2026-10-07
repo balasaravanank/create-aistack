@@ -1,6 +1,6 @@
 {
   "name": "@balasaravanank/create-aistack",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "The AI-First Project Scaffolder — generates full-stack projects pre-wired for AI coding agents",
   "type": "module",
   "bin": {
