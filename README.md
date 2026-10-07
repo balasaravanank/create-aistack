@@ -15,19 +15,19 @@ The cleanest and most modern way to use this tool is via npm's built-in `create`
 ### Interactive Wizard (Recommended)
 
 ```bash
-npm create aistack@latest
+npm create @balasaravanank/aistack@latest
 ```
 
 ### Command-Line Mode (Fast)
 
 ```bash
-npm create aistack@latest my-app -- --fe=react-next --be=fastapi --css=tailwind
+npm create @balasaravanank/aistack@latest my-app -- --fe=react-next --be=fastapi --css=tailwind
 ```
 
 ### Unattended Mode (CI/CD / Scripting)
 
 ```bash
-npm create aistack@latest my-app -- --fe=react --be=express --css=vanilla --no-interactive
+npm create @balasaravanank/aistack@latest my-app -- --fe=react --be=express --css=vanilla --no-interactive
 ```
 
 ## Configuration Matrix
@@ -57,7 +57,7 @@ Append features using the `--features` flag (comma-separated):
 
 Example:
 ```bash
-npm create aistack@latest my-app -- --fe=react --be=express --features=auth,db,testing
+npm create @balasaravanank/aistack@latest my-app -- --fe=react --be=express --features=auth,db,testing
 ```
 
 ## Architecture: The AI-First Approach
@@ -77,8 +77,8 @@ During execution, the CLI calculates and reports the context footprint of the ge
 
 Once inside a scaffolded project, you can run:
 
-- `npx create-aistack add <feature>`: Injects a new feature (e.g., auth, db) into the existing project.
-- `npx create-aistack sync`: Regenerates the `PROJECT.md` and `_contracts` files to align with recent codebase modifications.
+- `npx @balasaravanank/create-aistack add <feature>`: Injects a new feature (e.g., auth, db) into the existing project.
+- `npx @balasaravanank/create-aistack sync`: Regenerates the `PROJECT.md` and `_contracts` files to align with recent codebase modifications.
 
 ## Compatibility
 
