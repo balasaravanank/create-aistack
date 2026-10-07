@@ -27,11 +27,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/balasaravanank/create-aistack.git"
   },
-  "homepage": "",
+  "homepage": "https://github.com/balasaravanank/create-aistack#readme",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/balasaravanank/create-aistack/issues"
   },
   "publishConfig": {
     "access": "public"
