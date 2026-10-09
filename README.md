@@ -1,5 +1,7 @@
 # create-aistack
 
+[![npm version](https://img.shields.io/npm/v/@balasaravanank/create-aistack.svg?style=flat-square)](https://www.npmjs.com/package/@balasaravanank/create-aistack)
+
 A CLI scaffolding tool that generates full-stack projects optimized for AI coding agents.
 
 ## Overview
